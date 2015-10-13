@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "tlpi_hdr.h"
+#include <ctype.h>
 
 void sync(void);
 
@@ -44,8 +45,12 @@ int main() {
     printf("read only %d, instead of %d\n", rd, READ_SIZE);
 
   for (int i = 0; i < rd; ++i) {
-    printf("%c", rd_buf[i]);
-    if (i % 21 == 0) printf("\n");
+    if (isprint(rd_buf[i]))
+      printf("%c", rd_buf[i]);
+    else
+      putchar('.');
+
+    if (i > 0 && i % 21 == 0) putchar('\n');
   }
 
   close(f2);
