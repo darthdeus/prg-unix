@@ -34,7 +34,9 @@ int main() {
 
   int f2 = open("foo.txt", O_RDONLY);
 
-#define READ_SIZE (200 + sizeof(buf) + sizeof(buf2))
+  // sizeof(buf) is already part of the 200
+#define READ_SIZE (200 + sizeof(buf2))
+
   char rd_buf[READ_SIZE];
   int rd = read(f2, rd_buf, READ_SIZE);
 
