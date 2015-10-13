@@ -2,6 +2,8 @@
 #include <fcntl.h>
 #include "tlpi_hdr.h"
 
+void sync(void);
+
 int main() {
   int fd = open("foo.txt", O_RDWR | O_CREAT, 0644);
 
@@ -16,6 +18,7 @@ int main() {
   if (count == -1)
     err_exit("write()");
 
+  // This should create a hole
   if (lseek(fd, 200, SEEK_SET) == -1)
     err_exit("seek()");
 
