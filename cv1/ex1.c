@@ -13,14 +13,13 @@ typedef struct counter {
   int count;
 } counter;
 
-static int cmpcounter(void* c1, void* c2) {
+static int cmpcounter(const void* c1, const void* c2) {
   return ((struct counter*)c1)->count < ((struct counter*)c2)->count;
 }
 
-static int cmpstrings(void* c1, void* c2) {
+static int cmpstrings(const void* c1, const void* c2) {
   return strcmp(((struct counter*)c1)->s, ((struct counter*)c2)->s);
 }
-
 
 int main() {
   char* words[MAX_WORDS];
@@ -87,5 +86,6 @@ int main() {
   for (size_t i = 0; i < used_counters; ++i) {
     printf("%lu counter, %s: %d\n", i, counters[i].s, counters[i].count);
   }
+
 
 }
