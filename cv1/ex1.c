@@ -86,6 +86,4 @@ int main() {
   for (size_t i = 0; i < used_counters; ++i) {
     printf("%lu counter, %s: %d\n", i, counters[i].s, counters[i].count);
   }
-
-
 }
