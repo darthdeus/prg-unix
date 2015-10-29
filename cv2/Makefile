@@ -9,11 +9,11 @@ libf.so: varargs.c
 
 main: main.c libf.so
 	gcc $(CFLAGS) -Wl,-rpath=$(PWD) -L. -lf main.c -o main
-
 	./main
 
 dynamic: dynamic.c libf.so
 	gcc $(CFLAGS) -Wl,-rpath=$(PWD) -ldl dynamic.c -o dynamic
+	./dynamic
 
 clean:
 	rm -f -- *.so *.o
