@@ -1,4 +1,4 @@
-.PHONY: varargs dynamc libf.so
+.PHONY: main dynamc libf.so
 
 CFLAGS=-fPIC -Wall -Wextra -g3
 
@@ -7,7 +7,7 @@ default: dynamic
 libf.so: varargs.c
 	gcc $(CFLAGS) -shared -o libf.so varargs.c
 
-varargs: main.c libf.so
+main: main.c libf.so
 	gcc $(CFLAGS) -Wl,-rpath=$(PWD) -L. -lf main.c -o main
 
 	./main
